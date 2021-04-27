@@ -1,8 +1,8 @@
-const api = "http://localhost:3000/api/teddies";
+const apiUrl = "http://localhost:3000/api/teddies";
 
 //création d'une fonction pour récupérer tous les produits "teddies" de l'api"
 function getAllTeddies(){
-        fetch(api)
+        fetch(apiUrl)
 //format de reponse souhaitée en json//
             .then(response => response.json())
 //quand le traitement est terminé//
