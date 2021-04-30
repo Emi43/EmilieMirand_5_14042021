@@ -4,10 +4,13 @@ const apiUrl = "http://localhost:3000/api/teddies";
 function getAllTeddies(){
         fetch(apiUrl)
 //format de reponse souhaitée en json//
-            .then(response => response.json())
+            .then(response =>{
+            console.log(response);    
+            return response.json()
+})            
 //quand le traitement est terminé//
             .then(response => {
-            console.log(data);
+            console.log(response);
             displayTeddies(response);
 
 })
@@ -20,16 +23,16 @@ window.onload = getAllTeddies();
 //permet l'affichage des éléments passés en paramètre (response)//
 function displayTeddies(response){
     let section = document.getElementById("teddies");
-    for(let i = 0; i < response.lenght; i++) {
+    for(let i = 0; i < response.length; i++) {
         //mise en place d'une balise article pour la mise en page des produits//
-        let teddy = document.createElement("article")
+        let teddy = document.createElement("article");
             teddy.innerHTML += "<h2>" +
                 response[i].name +
                 "</h2>" +
                 "<img width='100%' src='" + response[i].imageUrl + "'>" +
                 "<p>" +
                 response[i].description +
-                "</p>"
+                "</p>" +
                 "<p>" +
                 response[i].price / 100 + "€" +
                 "</p>" +
