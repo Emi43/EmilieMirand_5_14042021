@@ -5,12 +5,12 @@ function getAllTeddies(){
         fetch(apiUrl)
 //format de reponse souhaitée en json//
             .then(response =>{
-            console.log(response);    
-            return response.json()
+            console.log(response)    
+            return response.json();
 })            
 //quand le traitement est terminé//
             .then(response => {
-            console.log(response);
+            console.log(response)
             displayTeddies(response);
 
 })

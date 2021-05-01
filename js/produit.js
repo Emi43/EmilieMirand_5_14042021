@@ -2,14 +2,17 @@
 const apiUrl = "http://localhost:3000/api/teddies";
 //récupération de l'Id//
 let search = new URLSearchParams(window.location.search);
-let productId = search.get("ID");
+let productId = search.get("id");
 //fonction getTeddy pour récuperer les données de l'ID de chaque Teddy
 function getTeddy(){
     fetch(apiUrl + '/' + productId)
-        .then(response => response.json())
-        .then(response =>{
+        .then(response => {
+            console.log(response)
+            return response.json();
+ })            
+        .then(response => {
+            console.log(response)
             displayTeddy(response);
-            console.log(ID);
 })        
         .catch(error => {   
         console.log(error);
@@ -28,7 +31,7 @@ function displayTeddy(response){
         "<p>" +
          response.description +
         "</p>" +
-        "<select id ='select'>" +
+        "<select id='select'>" +
         "</select>" +
         "<p>Prix : " + 
         response.price / 100 + "€" +
@@ -38,9 +41,10 @@ function displayTeddy(response){
         "</div>";
 
 //menu déroulant colors//
-    for(let i = 0; i < response.colors.length ; i++) {
+    for (let i = 0; i < response.length; i++) {
         document.getElementById('select').innerHTML +=
-        "<option value = '" + response.colors[i] + "'>" + response.colors[i] + "</option>";
+        "<option value = '' + response.colors[i] + ''>" + "</option>"
+        console.log(option);
     }
 
         document.getElementById('button').addEventListener("click",function(){
