@@ -51,3 +51,25 @@ const prixTotal = prixTotalCalcul.reduce(reducer,0);
 console.log(prixTotal);
 //code html du prix à afficher//
  document.getElementById("result_order").innerHTML = "TOTAL de la commande : " + prixTotal / 100 + " €" ;
+
+//...........formulaire.............//
+let articles = []; // données de la commande
+let contact; // données du contact
+let submit = document.getElementById("submit");
+
+submit.addEventListener("click", function(event){
+    event.preventDefault(); 
+    for(let article of read){
+        articles.push(article._id)
+        console.log(articles);
+    }
+    contact = {
+        firstName: document.getElementById("first_name").value,
+        lastName: document.getElementById("last_name").value,
+        address: document.getElementById("adresse").value,
+        code_postal: document.getElementById("code_postal").value,
+        ville: document.getElementById("ville").value,
+        email: document.getElementById("email").value,
+    } 
+   console.log(contact)
+    })

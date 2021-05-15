@@ -52,6 +52,7 @@ article
 }
 h2
 {
+    padding : 20px 0px;
     text-align: center;
 }
  article img
@@ -74,6 +75,11 @@ p#alerte_ajout_panier
     color: blue;
     font-size: 1.5em;
 }
+#container_teddy_selectionne
+{
+    margin: auto;
+    width: 95%;
+}
 #teddy_selectionne
 {
     border: 1px solid #000000;
@@ -82,6 +88,16 @@ p#alerte_ajout_panier
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+}
+#total_commande
+{
+    width: 95%;
+    display: flex;
+    border: 1px solid black;
+    margin: auto;
+    padding : 10px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .form
 {
