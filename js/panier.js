@@ -53,23 +53,53 @@ console.log(prixTotal);
  document.getElementById("result_order").innerHTML = "TOTAL de la commande : " + prixTotal / 100 + " €" ;
 
 //...........formulaire.............//
-let articles = []; // données de la commande
+let products = []; // données de la commande
 let contact; // données du contact
 let submit = document.getElementById("submit");
 
 submit.addEventListener("click", function(event){
     event.preventDefault(); 
+    if(read){
     for(let article of read){
-        articles.push(article._id)
-        console.log(articles);
+        products.push(article._id)
+        console.log(products);
     }
     contact = {
         firstName: document.getElementById("first_name").value,
         lastName: document.getElementById("last_name").value,
         address: document.getElementById("adresse").value,
-        code_postal: document.getElementById("code_postal").value,
-        ville: document.getElementById("ville").value,
+        city: document.getElementById("ville").value,
         email: document.getElementById("email").value,
     } 
    console.log(contact)
+}
+if(products.length > 0){
+    fetch("http://localhost:3000/api/teddies/order", {
+       method:"POST",
+       body: JSON.stringify({products, contact}),
+       headers: {
+        'content-type' : 'application/json'  
+       } 
     })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        if(data.orderId){
+            let confirmOrder = {
+                name: document.getElementById("first_name").value,
+                price: prixTotal /100 +"€",
+                id: data.orderId
+            }
+            localStorage.setItem("forConfirmOrder", JSON.stringify(confirmOrder)) 
+            window.open(`commande.html`, "commande");
+
+        } 
+        else {
+            window.alert("Chaque champ du formulaire doit être complété")
+        }
+    })
+    .catch(error => console.log(error));
+}
+})   
