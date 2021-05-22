@@ -12,16 +12,20 @@ function getTeddy(){
             return response.json();
  })            
         .then(data => {
+            //appel de la fonction pour afficher le produit//
             article = data
             displayTeddy()
             console.log(article);
 })        
         .catch(error =>{
+            //si erreur//
             console.log(error);
         })
-}   
+}  
+//permet le chargement et execution de la fonction// 
 window.onload = getTeddy();
-//affiche les données de l'object//
+
+//affiche les données de l'objet//
 function displayTeddy(){
     document.getElementById("affich_product").innerHTML +=
         "<div>" +

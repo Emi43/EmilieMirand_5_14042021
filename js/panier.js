@@ -55,8 +55,7 @@ console.log(prixTotal);
 //...........formulaire.............//
 let products = []; // données de la commande
 let contact; // données du contact
-let submit = document.getElementById("submit");
-
+let submit = document.getElementById("submit");//bouton d'envoi "procéder au paiement"//
 submit.addEventListener("click", function(event){
     event.preventDefault(); 
     if(read){
@@ -65,8 +64,8 @@ submit.addEventListener("click", function(event){
         console.log(products);
     }
     contact = {
-        firstName: document.getElementById("first_name").value,
-        lastName: document.getElementById("last_name").value,
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
         address: document.getElementById("adresse").value,
         city: document.getElementById("ville").value,
         email: document.getElementById("email").value,
@@ -76,7 +75,9 @@ submit.addEventListener("click", function(event){
 if(products.length > 0){
     fetch("http://localhost:3000/api/teddies/order", {
        method:"POST",
+       //corps de la requête transformé en format JSON//
        body: JSON.stringify({products, contact}),
+       //informations sur le type de contenu de la requête(JSON)//
        headers: {
         'content-type' : 'application/json'  
        } 
@@ -86,12 +87,15 @@ if(products.length > 0){
     })
     .then((data) => {
         console.log(data);
+        //ouverture de la page commande si le backend renvoie un id de commande//
         if(data.orderId){
+            //stockage de données dans localstorage pour les utiliser sur la page commande//
             let confirmOrder = {
-                name: document.getElementById("first_name").value,
+                name: document.getElementById("firstName").value,
                 price: prixTotal /100 +"€",
                 id: data.orderId
             }
+            //stockage des données de commande dans le localstorage//
             localStorage.setItem("forConfirmOrder", JSON.stringify(confirmOrder)) 
             window.open(`commande.html`, "commande");
 
