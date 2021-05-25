@@ -17,5 +17,10 @@ Le site est composé de 4 pages:
    .la page confirmation de commande (commande.html) remerciant l'utilisateur pour sa commande, indiquant le prix total et l'identifiant de commande envoyé par le serveur
    
    
+   La visualisation de ce projet nécessite l'installation de la partie back-end dont vous trouverez toutes les consignes sur le lien suivant :
+
+                                  https://github.com/OpenClassrooms-Student-Center/JWDP5#orinoco
+   
+   
    
    
