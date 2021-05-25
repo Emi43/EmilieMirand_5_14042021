@@ -1,6 +1,6 @@
 ORINOCO
 Concevez un site e-commerce,
-Projet réalisé dans le cadre de la formation développeur web Openclassrooms
+Projet réalisé dans le cadre de la formation développeur web Openclassrooms.
 Le site est composé de 4 pages:
 
    .une page de la  liste de produits permettant au click sur une image de sélectionner un produit (index.html)
