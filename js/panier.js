@@ -1,11 +1,9 @@
+//récupération des données produits du localstorage//
 let read = JSON.parse(localStorage.getItem("panier"));
-console.log(read);
 let article;
-
 //message pour informer que le panier est vide//
 if (read === null){
     document.getElementById("panier_vide").innerHTML +="Votre panier est vide"
-    console.log("je suis vide");
 }
 else{
     console.log("articles dans panier");
@@ -43,12 +41,11 @@ for (k = 0; k < read.length; k++ ){
     let prixProduitDansLePanier = read[k].price;
     //mettre les prix du panier dans la variable prixTotalCalcul//
     prixTotalCalcul.push(prixProduitDansLePanier)
-    console.log(prixTotalCalcul)
 }
 //additionner les prix du tableau de la variable"prixTotalCalcul"avec la methode reduce//
 const reducer = (accumulator,currentValue)=> accumulator + currentValue
 const prixTotal = prixTotalCalcul.reduce(reducer,0);
-console.log(prixTotal);
+
 //code html du prix à afficher//
  document.getElementById("result_order").innerHTML = "TOTAL de la commande : " + prixTotal / 100 + " €" ;
 
@@ -60,8 +57,7 @@ submit.addEventListener("click", function(event){
     event.preventDefault(); 
     if(read){
     for(let article of read){
-        products.push(article._id)
-        console.log(products);
+        products.push(article._id);
     }
     contact = {
         firstName: document.getElementById("firstName").value,
@@ -70,9 +66,8 @@ submit.addEventListener("click", function(event){
         city: document.getElementById("ville").value,
         email: document.getElementById("email").value,
     } 
-   console.log(contact)
 }
-if(products.length > 0){
+if(products.length > 0){//si au moins un produit dans le panier//
     fetch("http://localhost:3000/api/teddies/order", {
        method:"POST",
        //corps de la requête transformé en format JSON//
@@ -86,7 +81,6 @@ if(products.length > 0){
         return response.json();
     })
     .then((data) => {
-        console.log(data);
         //ouverture de la page commande si le backend renvoie un id de commande//
         if(data.orderId){
             //stockage de données dans localstorage pour les utiliser sur la page commande//

@@ -1,6 +1,5 @@
 //récupération des données de la commande dans le localstorage//
 let read = JSON.parse(localStorage.getItem("forConfirmOrder"));
-console.log(read);
 //affichage de la confirmation de commande (prénom,montant total et id)//
 document.querySelector(".commande").innerHTML = 
     `<h1 class="commande_confirmation">Merci ${read.name} pour votre commande d'un montant de ${read.price}.</h1>
